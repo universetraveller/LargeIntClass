@@ -2,7 +2,7 @@
 Unlimited Size Integer Class Based on Decimal System
 
 ## Updates
---3.15.2022--
+**3.15.2022**
 实现BigDecimal的一些想法：  
 加减法利用BigInteger的原理，乘法在BigInteger乘法基础之上引入小数点，小数点单独数乘，通过Karatsuba改进；  
 然后实现1/a；将除法改为乘除数的倒数；  
