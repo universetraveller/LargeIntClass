@@ -2,6 +2,11 @@
 Unlimited Size Integer Class Based on Decimal System
 
 ## Updates
+**3.23.2022**  
+修复了除法的一些bug  
+优化了运算性能  
+提供了<<重载运算符，优化ToString()函数  
+
 **3.15.2022**
 实现BigDecimal的一些想法：  
 加减法利用BigInteger的原理，乘法在BigInteger乘法基础之上引入小数点，小数点单独数乘，通过Karatsuba改进；  
