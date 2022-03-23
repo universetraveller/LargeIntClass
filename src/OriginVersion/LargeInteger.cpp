@@ -11,14 +11,14 @@ LargeInteger::LargeInteger(string input) {
 		std::string::iterator input_counter = input_begin;
 		int push_integer = 0;
 		if (*input_begin == '-') {
-			is_minus_ = true;  //ÉèÖÃ·ûºÅ
+			is_minus_ = true;  //è®¾ç½®ç¬¦å·
 			input_counter++;
 		}
 		else{
 			is_minus_ = false;
 		}
 		for (; input_counter < input_end; input_counter++) {
-			push_integer = (*input_counter) - 48;  //¸ù¾İASCIIÂë¶ÔÓ¦ÕûÊı
+			push_integer = (*input_counter) - 48;  //æ ¹æ®ASCIIç å¯¹åº”æ•´æ•°
 			large_number_.push_front(push_integer);
 		}
 	}
@@ -71,14 +71,14 @@ LargeInteger::LargeInteger(const deque<int>& input, bool sign,bool reverse) {
 	if (!input.empty()) {
 		is_minus_ = sign;
 		if (reverse) {
-			large_number_ = input;  //·´ÏòÊ±Ê¹ÓÃdeque×Ô´øµÄ¸³Öµ
+			large_number_ = input;  //åå‘æ—¶ä½¿ç”¨dequeè‡ªå¸¦çš„èµ‹å€¼
 		}
 		else {
 			for (int i = 0; i < input.size(); i++) {
 				large_number_.push_front(input[i]);
 			}
 		}
-		//Ô­À´ÊÇlarge_number_ = input;µ×²ã¸ÄÎª·´Ïòºó²»ÄÜÖ±½Ó¸³ÖµÁË
+		//åŸæ¥æ˜¯large_number_ = input;åº•å±‚æ”¹ä¸ºåå‘åä¸èƒ½ç›´æ¥èµ‹å€¼äº†
 	}
 	else{
 		large_number_.push_back(0);
@@ -90,14 +90,14 @@ LargeInteger::LargeInteger() {
 }
 bool LargeInteger::operator==(const LargeInteger& input) const {
 	if (is_minus_ != input.is_minus_) {
-		return false;  //·ûºÅ
+		return false;  //ç¬¦å·
 	}
 	if (this->large_number_.size() != input.large_number_.size()) {
-		return false;  //Î»Êı
+		return false;  //ä½æ•°
 	}
 	bool Check_Deque = std::equal(this->large_number_.begin(), this->large_number_.end(), input.large_number_.begin());
 	if (!Check_Deque) {
-		return false;  //Ã¿Î»¼ì²â
+		return false;  //æ¯ä½æ£€æµ‹
 	}
 	return true;
 }
@@ -118,7 +118,7 @@ LargeInteger LargeInteger::operator+(const LargeInteger& right_value) const {
 		cache_sign = this->is_minus_;
 	}
 	else {
-		//ÊµÏÖ¼õ·¨ºó·µ»Ø¼õ·¨Öµ
+		//å®ç°å‡æ³•åè¿”å›å‡æ³•å€¼
 		if (this->is_minus_) {
 			return right_value - (*this).absolute();
 		}
@@ -127,7 +127,7 @@ LargeInteger LargeInteger::operator+(const LargeInteger& right_value) const {
 		}
 	}
 	if (this->large_number_.size() > right_value.large_number_.size()) {
-		left_is_longer = true;//bool¿É´úÌæmarkµÄ¹¦ÄÜ
+		left_is_longer = true;//boolå¯ä»£æ›¿markçš„åŠŸèƒ½
 		main_value = left_begin;
 		sub_value = right_begin;
 	}
@@ -143,13 +143,13 @@ LargeInteger LargeInteger::operator+(const LargeInteger& right_value) const {
 				sub_value++;
 			}
 			else{
-				cache_number = ZERO;  //³¬¹ıÊı³¤ÒÔ0¼Æ
+				cache_number = ZERO;  //è¶…è¿‡æ•°é•¿ä»¥0è®¡
 			}
 			cache_number += *main_value;
 			cache_number += overflow_number;
 			if (cache_number >= 10) {
 				cache_number -= 10;
-				overflow_number = 1;  //½øÎ»´¦Àí
+				overflow_number = 1;  //è¿›ä½å¤„ç†
 			}
 			else{
 				overflow_number = 0;
@@ -157,7 +157,7 @@ LargeInteger LargeInteger::operator+(const LargeInteger& right_value) const {
 			cache_result.push_back(cache_number);
 		}
 		if (overflow_number != 0) {
-			cache_result.push_back(overflow_number);  //×î¸ßÎ»½øÎ»´¦Àí
+			cache_result.push_back(overflow_number);  //æœ€é«˜ä½è¿›ä½å¤„ç†
 		}
 	}
 	else{
@@ -225,7 +225,7 @@ void LargeInteger::TakeAbsolute() {
 }
 LargeInteger LargeInteger::AddAssignment(const LargeInteger& right_value) {
 	//Edit from the code of operator+
-	//¼ò»¯µÄ+=ÔËËã
+	//ç®€åŒ–çš„+=è¿ç®—
 	std::deque<int> cache_result;
 	bool cache_sign;
 	int cache_number = 0;
@@ -242,7 +242,7 @@ LargeInteger LargeInteger::AddAssignment(const LargeInteger& right_value) {
 		cache_sign = this->is_minus_;
 	}
 	else {
-		//ÊµÏÖ¼õ·¨ºó·µ»Ø¼õ·¨Öµ
+		//å®ç°å‡æ³•åè¿”å›å‡æ³•å€¼
 		if (this->is_minus_) {
 			return right_value - (*this).absolute();
 		}
@@ -251,7 +251,7 @@ LargeInteger LargeInteger::AddAssignment(const LargeInteger& right_value) {
 		}
 	}
 	if (this->large_number_.size() > right_value.large_number_.size()) {
-		left_is_longer = true;//bool¿É´úÌæmarkµÄ¹¦ÄÜ
+		left_is_longer = true;//boolå¯ä»£æ›¿markçš„åŠŸèƒ½
 		main_value = left_begin;
 		sub_value = right_begin;
 	}
@@ -323,7 +323,7 @@ LargeInteger LargeInteger::UnsignedAdd(const LargeInteger& b)const {
 		right_end = b.large_number_.end();
 	std::deque<int>::const_iterator main_value, sub_value;
 	if (this->large_number_.size() > b.large_number_.size()) {
-		left_is_longer = true;//bool¿É´úÌæmarkµÄ¹¦ÄÜ
+		left_is_longer = true;//boolå¯ä»£æ›¿markçš„åŠŸèƒ½
 		main_value = left_begin;
 		sub_value = right_begin;
 	}
@@ -391,7 +391,7 @@ LargeInteger LargeInteger::operator-(const LargeInteger& right_value) const {
 	int borrow_number = 0;
 	const int ZERO = 0;
 	bool additional_sign;
-	bool operation_check=true;  //¼ì²éÊÇ·ñ½øĞĞÏÂÒ»´ÎÑ­»·
+	bool operation_check=true;  //æ£€æŸ¥æ˜¯å¦è¿›è¡Œä¸‹ä¸€æ¬¡å¾ªç¯
 	const std::deque<int>::const_iterator left_begin = this->large_number_.begin(),
 		left_end = this->large_number_.end(),
 		right_begin = right_value.large_number_.begin(),
@@ -401,7 +401,7 @@ LargeInteger LargeInteger::operator-(const LargeInteger& right_value) const {
 	if (this->is_minus_ != right_value.is_minus_) {
 		return LargeInteger(this->UnsignedAdd(right_value).large_number_, this->is_minus_, true);
 	}
-	additional_sign = this->is_minus_ && right_value.is_minus_;  //ĞèÒªÓë×îºóµÄ·ûºÅºÏ²¢
+	additional_sign = this->is_minus_ && right_value.is_minus_;  //éœ€è¦ä¸æœ€åçš„ç¬¦å·åˆå¹¶
 	while (operation_check) {
 		if (left_count < left_end) {
 			left_cache_number = *left_count;
@@ -426,17 +426,17 @@ LargeInteger LargeInteger::operator-(const LargeInteger& right_value) const {
 			borrow_number = 0;
 		}
 		cache_result.push_back(cache_number);
-		operation_check = (left_count < left_end) || (right_count < right_end);  //¾ùµ½´ïÖÕµãÔòÖÕÖ¹
+		operation_check = (left_count < left_end) || (right_count < right_end);  //å‡åˆ°è¾¾ç»ˆç‚¹åˆ™ç»ˆæ­¢
 	}
 	cache_sign = (additional_sign && (!borrow_number)) || ((!additional_sign) && borrow_number);
 	if (borrow_number == 1) {
-		int borrow_number_mod = 0;  //Ğ¡Êı¼õ´óÊıÉú³É¶îÍâ½øÎ»£¬ĞèÒªÈ¡Ä£
+		int borrow_number_mod = 0;  //å°æ•°å‡å¤§æ•°ç”Ÿæˆé¢å¤–è¿›ä½ï¼Œéœ€è¦å–æ¨¡
 		for (int i = 0; i < cache_result.size(); i++) {
 			if (cache_result[i]==0&&borrow_number_mod==0) {
-				continue;  //ÌØÊâÇé¿ö
+				continue;  //ç‰¹æ®Šæƒ…å†µ
 			}
 			else {
-				cache_result[i] = 10 - borrow_number_mod - cache_result[i];  //¸÷Î»·Ö±ğÈ¡Ä££¬ÓÉÓÒ±ß¿ªÊ¼£¬Ä£ÊıÎª10»ò9£¨½èÎ»Ô­Àí£©
+				cache_result[i] = 10 - borrow_number_mod - cache_result[i];  //å„ä½åˆ†åˆ«å–æ¨¡ï¼Œç”±å³è¾¹å¼€å§‹ï¼Œæ¨¡æ•°ä¸º10æˆ–9ï¼ˆå€Ÿä½åŸç†ï¼‰
 				borrow_number_mod = 1;
 			}
 		}
@@ -450,25 +450,25 @@ LargeInteger LargeInteger::operator*(const LargeInteger& right_value) const {
 	std::deque<int> cache_result;
 	bool cache_sign;
 	int overflow_number=0;
-	int mark_left, mark_right;//×÷ÎªÏÂ±ê
-	int sub_mark_left=0, sub_mark_right=0;//ÒòÎªC++²»ÔÊĞíÏÂ±êĞ¡ÓÚ0¶øÔö¼ÓµÄ±êÊ¾·û,¿ÉÄÜÔö¼ÓÄÚ´æ
-	int timer_left = 0, timer_right = 0;//ÎªÁË³õÊ¼»¯sub_markÒıÈëµÄ¼Æ²½Æ÷£¬ÎŞÄÎÖ®¾Ù£¬ÕâÈıĞĞÏÔÊ¾ÁË±àĞ´ÕßË®Æ½µÄ²»×ã
+	int mark_left, mark_right;//ä½œä¸ºä¸‹æ ‡
+	int sub_mark_left=0, sub_mark_right=0;//å› ä¸ºC++ä¸å…è®¸ä¸‹æ ‡å°äº0è€Œå¢åŠ çš„æ ‡ç¤ºç¬¦,å¯èƒ½å¢åŠ å†…å­˜
+	int timer_left = 0, timer_right = 0;//ä¸ºäº†åˆå§‹åŒ–sub_markå¼•å…¥çš„è®¡æ­¥å™¨ï¼Œæ— å¥ˆä¹‹ä¸¾ï¼Œè¿™ä¸‰è¡Œæ˜¾ç¤ºäº†ç¼–å†™è€…æ°´å¹³çš„ä¸è¶³
 	int cache_number = 0;
 	if (this->is_minus_ == right_value.is_minus_) {
-		cache_sign = false;//°´³Ë·¨µÄ·ûºÅÔ­Ôò
+		cache_sign = false;//æŒ‰ä¹˜æ³•çš„ç¬¦å·åŸåˆ™
 	}
 	else{
 		cache_sign = true;
 	}
 	/*
-	×¢£ºÒÔÏÂÊµÏÖÖĞ²¿·Ö½âÊÍ±»×¢ÊÍ£¬ÊÇÒòÎªÄÇÊÇÔ­À´µÄÊµÏÖ·½·¨£¬ÓÅ»¯ºó·¢ÏÖĞ§¹ûÃ»ÓĞÇø±ğ£¬ÓÚÊÇ×¢ÊÍµô
+	æ³¨ï¼šä»¥ä¸‹å®ç°ä¸­éƒ¨åˆ†è§£é‡Šè¢«æ³¨é‡Šï¼Œæ˜¯å› ä¸ºé‚£æ˜¯åŸæ¥çš„å®ç°æ–¹æ³•ï¼Œä¼˜åŒ–åå‘ç°æ•ˆæœæ²¡æœ‰åŒºåˆ«ï¼Œäºæ˜¯æ³¨é‡Šæ‰
 	*/
-	for (;/* sub_mark_left < this->large_number_.size() || */ sub_mark_right< right_value.large_number_.size()/*°´µÀÀísub_mark_rightÓ¦¸ÃĞ´ÔÚÇ°ÃæºÃµã*/;) {
-		mark_left = sub_mark_left;//ÕâÖÖ·½·¨²»¿É±ÜÃâµÄ¶à¸ö¸³Öµ
+	for (;/* sub_mark_left < this->large_number_.size() || */ sub_mark_right< right_value.large_number_.size()/*æŒ‰é“ç†sub_mark_rightåº”è¯¥å†™åœ¨å‰é¢å¥½ç‚¹*/;) {
+		mark_left = sub_mark_left;//è¿™ç§æ–¹æ³•ä¸å¯é¿å…çš„å¤šä¸ªèµ‹å€¼
 		mark_right = sub_mark_right;
 		cache_number = 0;
 		while (sub_mark_left>-1&&sub_mark_right<right_value.large_number_.size() ){
-			cache_number += (this->large_number_[mark_left])*(right_value.large_number_[mark_right]);//°´ÊúÊ½Ã¿Ò»ÁĞÔËËã£¬´æÈëcache_number
+			cache_number += (this->large_number_[mark_left])*(right_value.large_number_[mark_right]);//æŒ‰ç«–å¼æ¯ä¸€åˆ—è¿ç®—ï¼Œå­˜å…¥cache_number
 			if (mark_left != 0) {
 				mark_left--;
 			}
@@ -478,7 +478,7 @@ LargeInteger LargeInteger::operator*(const LargeInteger& right_value) const {
 		}
 		cache_number += overflow_number;
 		if (cache_number>= 10) {
-			overflow_number = cache_number / 10;//½øÎ»´¦Àí
+			overflow_number = cache_number / 10;//è¿›ä½å¤„ç†
 			cache_number %= 10;
 		}
 		else{
@@ -486,19 +486,19 @@ LargeInteger LargeInteger::operator*(const LargeInteger& right_value) const {
 		}
 		cache_result.push_back(cache_number);
 		/*if (timer_left == this->large_number_.size() - 1 && timer_right == right_value.large_number_.size() - 1) {
-			break;//ÖØµã¿ØÖÆÓï¾ä£¬Ìø³öÎŞÏŞÑ­»·,ÒòÎª×îºóÏÂ±ê×ÜÊÇ±ÈsizeĞ¡
+			break;//é‡ç‚¹æ§åˆ¶è¯­å¥ï¼Œè·³å‡ºæ— é™å¾ªç¯,å› ä¸ºæœ€åä¸‹æ ‡æ€»æ˜¯æ¯”sizeå°
 		}*/
 		if (timer_left < this->large_number_.size()-1) {
 			timer_left++;
 		}
 		else if(timer_right<right_value.large_number_.size()/* - 1*/) {
-			timer_right++;//×îÖÕ×ÜÊÇÒÔÓÒÖµµ½´ïsize½áÊø
+			timer_right++;//æœ€ç»ˆæ€»æ˜¯ä»¥å³å€¼åˆ°è¾¾sizeç»“æŸ
 		}
 		sub_mark_left = timer_left;
 		sub_mark_right = timer_right;
 	}
 	if (overflow_number != 0) {
-		cache_result.push_back(overflow_number);//×î¸ß½øÎ»´¦Àí
+		cache_result.push_back(overflow_number);//æœ€é«˜è¿›ä½å¤„ç†
 	}
 
 	return LargeInteger(cache_result,cache_sign,true);
@@ -508,7 +508,7 @@ bool LargeInteger::operator>(const LargeInteger& right_value)const {
 		return false;
 	}
 	if (this->is_minus_ != right_value.is_minus_) {
-		//ÕâÀïĞèÒªĞŞ¸´0Ê×Î»ºÍÕı¸º0Í¬Ê±³öÏÖµÄbug£¬·ñÔò»á³öÏÖ´íÎó½á¹û
+		//è¿™é‡Œéœ€è¦ä¿®å¤0é¦–ä½å’Œæ­£è´Ÿ0åŒæ—¶å‡ºç°çš„bugï¼Œå¦åˆ™ä¼šå‡ºç°é”™è¯¯ç»“æœ
 		if (this->is_minus_) {
 			return false;
 		}
@@ -517,7 +517,7 @@ bool LargeInteger::operator>(const LargeInteger& right_value)const {
 		}
 	}
 	else {
-		//ÕâÀïĞèÒªĞŞ¸´¶à¸ö0Í¬Ê±³öÏÖ¼°0Ê×Î»µÄÎÊÌâ£¬ÒòÎªÎªÁË¼õÉÙÔËËãĞèÒªÏÈ±È½ÏÎ»Êı
+		//è¿™é‡Œéœ€è¦ä¿®å¤å¤šä¸ª0åŒæ—¶å‡ºç°åŠ0é¦–ä½çš„é—®é¢˜ï¼Œå› ä¸ºä¸ºäº†å‡å°‘è¿ç®—éœ€è¦å…ˆæ¯”è¾ƒä½æ•°
 		/*this->PopZero();
 		right_value.PopZero();*/
 		int left_size = this->large_number_.size();
@@ -566,26 +566,26 @@ bool LargeInteger::operator>(const LargeInteger& right_value)const {
 	}
 }
 LargeInteger LargeInteger::Multiple_AddRow(const LargeInteger& right_value)const {
-	//³Ë·¨µÄÁíÒ»ÖÖÊµÏÖ
+	//ä¹˜æ³•çš„å¦ä¸€ç§å®ç°
 	std::deque<int> cache_result;
 	bool cache_sign;
 	int overflow_number = 0;
 	int cache_number = 0;
 	cache_result.push_back(0);
 	if (this->is_minus_ == right_value.is_minus_) {
-		cache_sign = false;//°´³Ë·¨µÄ·ûºÅÔ­Ôò
+		cache_sign = false;//æŒ‰ä¹˜æ³•çš„ç¬¦å·åŸåˆ™
 	}
 	else {
 		cache_sign = true;
 	}
 	LargeInteger cache_Int(cache_result, false,true);
-	cache_result.erase(cache_result.begin(), cache_result.end());//Ã¿´Î´´½¨¶ÔÏó¶¼Çå¿Õcache
+	cache_result.erase(cache_result.begin(), cache_result.end());//æ¯æ¬¡åˆ›å»ºå¯¹è±¡éƒ½æ¸…ç©ºcache
 	for (int i = 0; i < right_value.large_number_.size(); i++) {
 		for (int j = 0; j < this->large_number_.size(); j++) {
 			cache_number = (right_value.large_number_[i]) * (this->large_number_[j]);
 			cache_number += overflow_number;
 			if (cache_number >= 10) {
-				overflow_number = cache_number / 10;//½øÎ»¿ØÖÆ
+				overflow_number = cache_number / 10;//è¿›ä½æ§åˆ¶
 				cache_number %= 10;
 			}
 			else{
@@ -594,15 +594,15 @@ LargeInteger LargeInteger::Multiple_AddRow(const LargeInteger& right_value)const
 			cache_result.push_back(cache_number);
 		}
 		for (int k = i; k > 0; k--) {
-			cache_result.push_front(0);//°ÙÎ»¿ØÖÆ
+			cache_result.push_front(0);//ç™¾ä½æ§åˆ¶
 		}
 		if (overflow_number != 0) {
-			cache_result.push_back(overflow_number);//×î¸ßÎ»¿ØÖÆ
+			cache_result.push_back(overflow_number);//æœ€é«˜ä½æ§åˆ¶
 		}
-		cache_Int += LargeInteger(cache_result, false, true);//¸ÃÏîĞ§ÂÊ±È½ÏµÍ£¬ÒòÎª´´½¨ÁËĞÂ¶ÔÏó£¬Èç¹ûÖ±½Ó¼ÆËãÊı×éÓ¦¸Ã»á¿ìÒ»µã
-															//¿¼ÂÇÓÃUnsignedAddÓÅ»¯£¬µ«cache_resultÊÇÊı×é£¬ÈÔĞè´´½¨¶ÔÏó
+		cache_Int += LargeInteger(cache_result, false, true);//è¯¥é¡¹æ•ˆç‡æ¯”è¾ƒä½ï¼Œå› ä¸ºåˆ›å»ºäº†æ–°å¯¹è±¡ï¼Œå¦‚æœç›´æ¥è®¡ç®—æ•°ç»„åº”è¯¥ä¼šå¿«ä¸€ç‚¹
+															//è€ƒè™‘ç”¨UnsignedAddä¼˜åŒ–ï¼Œä½†cache_resultæ˜¯æ•°ç»„ï¼Œä»éœ€åˆ›å»ºå¯¹è±¡
 		cache_result.erase(cache_result.begin(), cache_result.end());
-		overflow_number = 0;//½øÈëµÚ¶şĞĞÇ°½øÎ»ÇåÁã
+		overflow_number = 0;//è¿›å…¥ç¬¬äºŒè¡Œå‰è¿›ä½æ¸…é›¶
 	}
 	cache_Int.is_minus_ = cache_sign;
 	return cache_Int;
@@ -622,9 +622,9 @@ LargeInteger LargeInteger::UnsignedDivision(const LargeInteger& right_value)cons
 	if (this->absolute() < right_value.absolute()) {
 		return LargeInteger("0");
 	}
-	//ÉÏÃæ3¸öÌõ¼şÓï¾ä¼ì²éÊÇ·ñ¿É³ı£¨Ô­À´ÓĞ4¸ö£©
-	int first_number_left, first_number_right;  //ÊıµÄµÚÒ»¸öÊı
-	int left_size, right_size, d_size;  //Êı³¤¼°Êı³¤²î
+	//ä¸Šé¢3ä¸ªæ¡ä»¶è¯­å¥æ£€æŸ¥æ˜¯å¦å¯é™¤ï¼ˆåŸæ¥æœ‰4ä¸ªï¼‰
+	int first_number_left, first_number_right;  //æ•°çš„ç¬¬ä¸€ä¸ªæ•°
+	int left_size, right_size, d_size;  //æ•°é•¿åŠæ•°é•¿å·®
 	int ori_min_mark, ori_max_mark;
 	left_size = this->large_number_.size();
 	right_size = right_value.large_number_.size();
@@ -643,7 +643,7 @@ LargeInteger LargeInteger::UnsignedDivision(const LargeInteger& right_value)cons
 		max_mark.TenFold(d_size - 1);
 		mark = min_mark;
 		mark.AddAssignment(max_mark);
-		mark.Divide2_Algorithm();  //Ê×´Î¶ş·Ö
+		mark.Divide2_Algorithm();  //é¦–æ¬¡äºŒåˆ†
 		while ((mark + BASE_MULTIPLY) * right_value <= (*this) || (mark - BASE_MULTIPLY) * right_value >= (*this)) {
 			if (mark * right_value > (*this)) {
 				max_mark = mark;
@@ -653,20 +653,20 @@ LargeInteger LargeInteger::UnsignedDivision(const LargeInteger& right_value)cons
 			}
 			mark = min_mark;
 			mark.AddAssignment(max_mark);
-			mark.Divide2_Algorithm();  //¶ş·Ö·¨
+			mark.Divide2_Algorithm();  //äºŒåˆ†æ³•
 		}
 		if (mark * right_value > (*this)) {
 			mark += (-BASE_MULTIPLY);
 		}
 	}
 	else {
-		//sizeÏàÍ¬Ê±³öÏÖbug£¬Õë¶ÔÕâÖÖÇé¿ö±àĞ´
+		//sizeç›¸åŒæ—¶å‡ºç°bugï¼Œé’ˆå¯¹è¿™ç§æƒ…å†µç¼–å†™
 		min_mark = 0;
 		max_mark = 9;
 		mark = 4;
 		while ((max_mark-min_mark)>BASE_MULTIPLY) {
 			if (mark * right_value == (*this)) {
-				return mark;  //ÊıÖµ²¹Õı£¬»áÔö¼ÓÒ»Ğ©ÔËËã
+				return mark;  //æ•°å€¼è¡¥æ­£ï¼Œä¼šå¢åŠ ä¸€äº›è¿ç®—
 			}
 			if (mark * right_value > (*this)) {
 				max_mark = mark;
@@ -683,9 +683,9 @@ LargeInteger LargeInteger::UnsignedDivision(const LargeInteger& right_value)cons
 	return mark;
 }
 void LargeInteger::Right_Digit_Operation(int carry_number) {
-	//Ğ§¹ûÎªÊ¹Ô­À´µÄÊı½øÎ»£¬Ä¬ÈÏ½øÎ»0
-	//LargeInt.R_D_O(2); ±íÏÖÎªÔÚÔ­Êı×îºóÔö¼ÓÒ»Î»2
-	this->PopZero();//Ê¹Êı±äÎª±ê×¼ĞÍ
+	//æ•ˆæœä¸ºä½¿åŸæ¥çš„æ•°è¿›ä½ï¼Œé»˜è®¤è¿›ä½0
+	//LargeInt.R_D_O(2); è¡¨ç°ä¸ºåœ¨åŸæ•°æœ€åå¢åŠ ä¸€ä½2
+	this->PopZero();//ä½¿æ•°å˜ä¸ºæ ‡å‡†å‹
 	if (!(this->IsZero())) {
 		this->large_number_.push_front(carry_number);
 	}
@@ -695,7 +695,7 @@ void LargeInteger::Right_Digit_Operation(int carry_number) {
 	}
 }
 void LargeInteger::Left_Digit_Operation(int carry_number) {
-	//ÓÒ½øÎ»µÄ¶Ô³ÆĞÎÊ½
+	//å³è¿›ä½çš„å¯¹ç§°å½¢å¼
 	this->PopZero();
 	if (carry_number!=0) {
 		this->large_number_.push_back(carry_number);
@@ -703,8 +703,8 @@ void LargeInteger::Left_Digit_Operation(int carry_number) {
 }
 void LargeInteger::Divide2_Algorithm() {
 	//NUMBER=OTHER_NUMBER*10+LAST_NUMBER;
-	//¸öÎ»ÊıÖ´ĞĞÊ±³öÏÖbug£¬ÒòÎªpop½áÊøºódequeÎª¿Õ
-	//²»ĞŞ¸Ä£¬·ÀÖ¹Ôö¼ÓÔËËãÁ¿£¬¸Ãº¯ÊıÓÃÓÚ2Î»¼°ÒÔÉÏÊıµÄ³ıÒÔ¶ş²Ù×÷
+	//ä¸ªä½æ•°æ‰§è¡Œæ—¶å‡ºç°bugï¼Œå› ä¸ºpopç»“æŸådequeä¸ºç©º
+	//ä¸ä¿®æ”¹ï¼Œé˜²æ­¢å¢åŠ è¿ç®—é‡ï¼Œè¯¥å‡½æ•°ç”¨äº2ä½åŠä»¥ä¸Šæ•°çš„é™¤ä»¥äºŒæ“ä½œ
 	LargeInteger BASE_DIVIDE2("5");
 	int Last_number = this->large_number_[0];
 	Last_number /= 2;
@@ -720,22 +720,22 @@ void LargeInteger::Divide2_Digit() {
 	this->PopZero();
 	for (int i = this->large_number_.size() - 1; i > -1; i--) {
 		cache_number += this->large_number_[i];
-		cache_result.push_front(cache_number / 2);  //¸ßÎ»µÄ³ı·¨
-		overflow_number = cache_number % 2;  //³ı²»¾¡µÄ½èÎ»
-		cache_number = 10 * overflow_number;  //½èÎ»
+		cache_result.push_front(cache_number / 2);  //é«˜ä½çš„é™¤æ³•
+		overflow_number = cache_number % 2;  //é™¤ä¸å°½çš„å€Ÿä½
+		cache_number = 10 * overflow_number;  //å€Ÿä½
 	}
 	this->large_number_ = cache_result;
 	this->PopZero();
 }
 void LargeInteger::Divide2_Bit() {
-	//Õù¶ÔD2_AµÄÎÊÌâÌá¹©ÁË¸öÎ»ÊıµÄ³ı¶şÔËËã
+	//äº‰å¯¹D2_Açš„é—®é¢˜æä¾›äº†ä¸ªä½æ•°çš„é™¤äºŒè¿ç®—
 	(this->large_number_[0]) /= 2;
 }
 LargeInteger LargeInteger::operator%(const LargeInteger& right_value)const {
-	return (*this) - (*this / right_value) * right_value;//Ô­Ê¼¶¨Òå£¬Ğ§ÂÊ½ÏµÍ£¬µ«±È½ÏÉÙÓÃ
+	return (*this) - (*this / right_value) * right_value;//åŸå§‹å®šä¹‰ï¼Œæ•ˆç‡è¾ƒä½ï¼Œä½†æ¯”è¾ƒå°‘ç”¨
 }
 LargeInteger LargeInteger::operator/(const LargeInteger& right_value)const {
-	LargeInteger cache_result = (this->absolute()).UnsignedDivision(right_value.absolute());//ÕâÒ»ĞĞ¾ö¶¨ÁËËü±ÈUnsignedDivisionÂı
+	LargeInteger cache_result = (this->absolute()).UnsignedDivision(right_value.absolute());//è¿™ä¸€è¡Œå†³å®šäº†å®ƒæ¯”UnsignedDivisionæ…¢
 	if (this->is_minus_ == right_value.is_minus_) {
 		cache_result.is_minus_ = false;
 	}
