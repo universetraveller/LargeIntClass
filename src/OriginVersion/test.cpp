@@ -15,20 +15,20 @@ int main() {
 
 
 void Tests() {
-	//Interfaces£º
-	//	¹¹Ôìº¯Êı£º
+	//Interfacesï¼š
+	//	æ„é€ å‡½æ•°ï¼š
 	
-	//	LargeInteger(string input);  ÓÃ×Ö·û´®¹¹Ôì£¬Ä¬ÈÏ»á¼ì²é×Ö·ûºÏ·¨ĞÔ
+	//	LargeInteger(string input);  ç”¨å­—ç¬¦ä¸²æ„é€ ï¼Œé»˜è®¤ä¼šæ£€æŸ¥å­—ç¬¦åˆæ³•æ€§
 	LargeInteger CS1("-2022");
 	CS1.PrintLargeInt_cout();
 	std::cout << "\n";
 
-		//	LargeInteger(string input, bool Check_value);  bool¶ÔÓ¦ÊÇ·ñ¼ì²é×Ö·û¹æ·¶
+		//	LargeInteger(string input, bool Check_value);  boolå¯¹åº”æ˜¯å¦æ£€æŸ¥å­—ç¬¦è§„èŒƒ
 	LargeInteger CS2("2-022",false);
 	CS2.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	LargeInteger(const deque<int>&, bool, bool reverse = false);  ÓÃdeque³õÊ¼»¯£¬bool¶ÔÓ¦·ûºÅ¡¢dequeÊÇ·ñÎª·´Ïò
+	//	LargeInteger(const deque<int>&, bool, bool reverse = false);  ç”¨dequeåˆå§‹åŒ–ï¼Œboolå¯¹åº”ç¬¦å·ã€dequeæ˜¯å¦ä¸ºåå‘
 	std::deque<int> cs3;
 	cs3.push_back(1);
 	cs3.push_back(2);
@@ -36,12 +36,12 @@ void Tests() {
 	CS3.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	LargeInteger();  Éú³É³õÊ¼»¯Îª0µÄ¶ÔÏó
+	//	LargeInteger();  ç”Ÿæˆåˆå§‹åŒ–ä¸º0çš„å¯¹è±¡
 	LargeInteger CS4;
 	CS4.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	ÖØÔØÔËËã·û£º
+	//	é‡è½½è¿ç®—ç¬¦ï¼š
 	LargeInteger a("98765432112345678998765432101234567890987654321123456789987654321123456789987654321");
 	LargeInteger b("2147483647", true);
 	LargeInteger c("-65536", false);
@@ -50,7 +50,7 @@ void Tests() {
 	LargeInteger f("310");
 	//	bool operator==(const LargeInteger & input) const;
 	std::cout << (a == b) << " " << (d == f) << "\n";
-	//	bool operator!=(const LargeInteger & input) const£»
+	//	bool operator!=(const LargeInteger & input) constï¼›
 	std::cout << (d != f) << "\n";
 	//LargeInteger operator+(const LargeInteger&) const;
 	(b + c).PrintLargeInt_cout();
@@ -62,13 +62,13 @@ void Tests() {
 
 	//LargeInteger operator-() const;
 	(-e).PrintLargeInt_cout();
-	//LargeInteger operator=(int);  ÓÃÕûÊı¹¹ÔìLargeInteger
+	//LargeInteger operator=(int);  ç”¨æ•´æ•°æ„é€ LargeInteger
 	LargeInteger CS5;
 	CS5 = 15;
 	CS5.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//LargeInteger operator=(string);  ÓÃ×Ö·û´®¹¹ÔìLargeInteger
+	//LargeInteger operator=(string);  ç”¨å­—ç¬¦ä¸²æ„é€ LargeInteger
 	CS5 = "16";
 	CS5.PrintLargeInt_cout();
 	std::cout << "\n";
@@ -87,60 +87,60 @@ void Tests() {
 
 	//bool operator>(const LargeInteger&)const;
 	std::cout << (b > d) << "\n";
-	//¼° += -= *= < >= <= ++ --
+	//åŠ += -= *= < >= <= ++ --
 
-	//	³ÉÔ±º¯Êı£º
-	//	LargeInteger absolute() const;  ·µ»Ø¶ÔÏóµÄ¾ø¶ÔÖµ
+	//	æˆå‘˜å‡½æ•°ï¼š
+	//	LargeInteger absolute() const;  è¿”å›å¯¹è±¡çš„ç»å¯¹å€¼
 	c.absolute().PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	void TakeAbsolute();  Ê¹¶ÔÏóÈ¡¾ø¶ÔÖµ
+	//	void TakeAbsolute();  ä½¿å¯¹è±¡å–ç»å¯¹å€¼
 	CS1.TakeAbsolute();
 	CS1.PrintLargeInt_cout();
-	//	LargeInteger UnsignedAdd(const LargeInteger & b)const;  ÎŞ·ûºÅ¼Ó·¨
+	//	LargeInteger UnsignedAdd(const LargeInteger & b)const;  æ— ç¬¦å·åŠ æ³•
 	(b.UnsignedAdd(c)).PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	void PrintLargeInt()const;  ÓÃcoutÊä³ö´óÕûÊı£¬Î´±ê×¼»¯¶ÔÏó
-	//	string ToString()const;  ·µ»Ø×Ö·û´®ĞÍ´óÕûÊı£¬Î´±ê×¼»¯¶ÔÏó
+	//	void PrintLargeInt()const;  ç”¨coutè¾“å‡ºå¤§æ•´æ•°ï¼Œæœªæ ‡å‡†åŒ–å¯¹è±¡
+	//	string ToString()const;  è¿”å›å­—ç¬¦ä¸²å‹å¤§æ•´æ•°ï¼Œæœªæ ‡å‡†åŒ–å¯¹è±¡
 	string str = a.ToString();
 	std::cout << str << "\n";
-	//	LargeInteger Multiple_AddRow(const LargeInteger&)const;  ³Ë·¨µÄÁíÒ»ÖÖÊµÏÖ£¬Ğ§ÂÊ½ÏµÍ
+	//	LargeInteger Multiple_AddRow(const LargeInteger&)const;  ä¹˜æ³•çš„å¦ä¸€ç§å®ç°ï¼Œæ•ˆç‡è¾ƒä½
 	(c.Multiple_AddRow(d)).PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	LargeInteger UnsignedDivision(const LargeInteger&)const;  ÎŞ·ûºÅ³ı·¨
+	//	LargeInteger UnsignedDivision(const LargeInteger&)const;  æ— ç¬¦å·é™¤æ³•
 	(b / d).PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	void Right_Digit_Operation(int carry_number = 0);  ÓÒ·½Î»ÔËËã
+	//	void Right_Digit_Operation(int carry_number = 0);  å³æ–¹ä½è¿ç®—
 	d.Right_Digit_Operation();
 	d.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	void Left_Digit_Operation(int carry_number = 1);  ×ó·½Î»ÔËËã
-	//	void Divide2_Algorithm();  Ïà¶Ô¸ßĞÔÄÜµÄ³ıÒÔ¶ş£¬ÒªÇóÎ»Êı´óÓÚ2£¬·ñÔò´íÎó
+	//	void Left_Digit_Operation(int carry_number = 1);  å·¦æ–¹ä½è¿ç®—
+	//	void Divide2_Algorithm();  ç›¸å¯¹é«˜æ€§èƒ½çš„é™¤ä»¥äºŒï¼Œè¦æ±‚ä½æ•°å¤§äº2ï¼Œå¦åˆ™é”™è¯¯
 	a.Divide2_Algorithm();
 	a.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	void Divide2_Digit();  °´Î»³ıÒÔ2
+	//	void Divide2_Digit();  æŒ‰ä½é™¤ä»¥2
 	b.Divide2_Digit();
 	b.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	void Divide2_Bit();  ¸öÎ»³ıÒÔ2£¬²¹³äÉÏ·½µÄ´íÎó
+	//	void Divide2_Bit();  ä¸ªä½é™¤ä»¥2ï¼Œè¡¥å……ä¸Šæ–¹çš„é”™è¯¯
 	
-	//	LargeInteger AddAssignment(const LargeInteger&);  ÓÅ»¯µÄ +=
+	//	LargeInteger AddAssignment(const LargeInteger&);  ä¼˜åŒ–çš„ +=
 	b.AddAssignment(d);
 	b.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	bool IsZero()const;  ·µ»Ø¶ÔÏóÊÇ·ñÎª0
+	//	bool IsZero()const;  è¿”å›å¯¹è±¡æ˜¯å¦ä¸º0
 	LargeInteger CSZero("000");
 	LargeInteger CSOne("0015");
 	std::cout << CSZero.IsZero() << "\n";
-	//	void PopZero();  È¥³ı¶àÓà0£¬Ò²»áÊ¹¶ÔÏó±ê×¼»¯
+	//	void PopZero();  å»é™¤å¤šä½™0ï¼Œä¹Ÿä¼šä½¿å¯¹è±¡æ ‡å‡†åŒ–
 	CSZero.PopZero();
 	CSOne.PopZero();
 	CSZero.PrintLargeInt_cout();
@@ -148,7 +148,7 @@ void Tests() {
 	CSOne.PrintLargeInt_cout();
 	std::cout << "\n";
 
-	//	void TenFold();  Ïàµ±ÓÚ *= 10
+	//	void TenFold();  ç›¸å½“äº *= 10
 	f.TenFold();
 	f.PrintLargeInt_cout();
 }
