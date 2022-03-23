@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <string>
 
-/*FillValidChar¸øÓÃÓÚ¼ì²âÊäÈëÊÇ·ñºÏ·¨µÄvectorÌî³ä*/
+/*FillValidCharç»™ç”¨äºæ£€æµ‹è¾“å…¥æ˜¯å¦åˆæ³•çš„vectorå¡«å……*/
 inline void FillVaildChar(std::vector<char>& input_vector) {
 	input_vector.push_back('1');
 	input_vector.push_back('2');
@@ -17,11 +17,11 @@ inline void FillVaildChar(std::vector<char>& input_vector) {
 	input_vector.push_back('0');
 }
 
-/*ÓÃÓÚ¼ì²âÊ××Ö·ûÊÇ·ñºÏ·¨£¬ÆävectorÓëCheckChar²»Í¬*/
+/*ç”¨äºæ£€æµ‹é¦–å­—ç¬¦æ˜¯å¦åˆæ³•ï¼Œå…¶vectorä¸CheckCharä¸åŒ*/
 inline bool CheckSignChar(const std::string::iterator& first_iterator) {
 	static std::vector<char> valid_sign;
 	FillVaildChar(valid_sign);
-	valid_sign.push_back('-');  //Ôö¼Ó¼ì²é¸ººÅ
+	valid_sign.push_back('-');  //å¢åŠ æ£€æŸ¥è´Ÿå·
 	for (int i = 0; i < valid_sign.size(); i++) {
 		if (*first_iterator == valid_sign[i]) {
 			return true;
@@ -30,11 +30,11 @@ inline bool CheckSignChar(const std::string::iterator& first_iterator) {
 	return false;
 }
 
-/*¼ì²âÊ××Ö·ûÒÔÍâµÄ×Ö·ûºÏ·¨ĞÔ£¬»ù±¾Ô­ÀíÊÇ¼ì²âµ½ºÏ·¨×Ö·û±ãÍË³ö£¬·ñÔò·µ»Øfalse*/
+/*æ£€æµ‹é¦–å­—ç¬¦ä»¥å¤–çš„å­—ç¬¦åˆæ³•æ€§ï¼ŒåŸºæœ¬åŸç†æ˜¯æ£€æµ‹åˆ°åˆæ³•å­—ç¬¦ä¾¿é€€å‡ºï¼Œå¦åˆ™è¿”å›false*/
 inline bool CheckChar(std::string& input_string) {
 	const std::string::iterator string_begin = input_string.begin();
 	const std::string::iterator string_end = input_string.end();
-	std::string::iterator counter = string_begin;  //¼ÆÊıÆ÷
+	std::string::iterator counter = string_begin;  //è®¡æ•°å™¨
 	static std::vector<char> valid_char;
 	bool check_value = false;
 	FillVaildChar(valid_char);
